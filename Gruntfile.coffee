@@ -9,6 +9,14 @@ module.exports = (grunt) =>
           src: ['**/*.{png,jpg,gif,svg}']
           dest: 'public/img/'
         ]
+    copy:
+      main:
+        files: [
+          expand: true
+          cwd: 'static'
+          src: ['**', '!img/**']
+          dest: 'public/data'
+        ]
     jade:
       compile:
         options:
@@ -110,7 +118,8 @@ module.exports = (grunt) =>
   grunt.loadNpmTasks 'grunt-este-watch'
   grunt.loadNpmTasks 'grunt-newer'
   grunt.loadNpmTasks 'grunt-image'
-  grunt.registerTask 'make', ['bower', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
+  grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.registerTask 'make', ['bower', 'newer:copy', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
   grunt.registerTask 'dry-deploy', ['rsync:dryrun']
   grunt.registerTask 'deploy', ['make', 'rsync:deploy']
   grunt.registerTask 'default', ['make', 'connect', 'esteWatch']
