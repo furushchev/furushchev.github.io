@@ -112,5 +112,5 @@ module.exports = (grunt) =>
   grunt.loadNpmTasks 'grunt-image'
   grunt.registerTask 'make', ['bower', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
   grunt.registerTask 'dry-deploy', ['rsync:dryrun']
-  grunt.registerTask 'deploy', ['rsync:deploy']
+  grunt.registerTask 'deploy', ['make', 'rsync:deploy']
   grunt.registerTask 'default', ['make', 'connect', 'esteWatch']
