@@ -7,18 +7,29 @@ html(lang="ja")
     title Я - чайка, нет... не то. Я - чайник.
     // stylesheets
     block css
+      link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
+      link(rel='stylesheet', href='//fonts.googleapis.com/icon?family=Material+Icons')
+      link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+      link(rel='stylesheet', href='//code.getmdl.io/1.1.3/material.indigo-pink.min.css')
+      // link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+      // link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/css/bootstrap-material-design.min.css')
+      // link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/css/ripples.min.css')
+      link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css')
       link(rel='stylesheet', href='css/style.css')
   body
-    // header
-    include ./header.jade
-    // contents
-    block contents
-    // footer
-    include ./footer.jade
+    div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      // header
+      include ./header.jade
+      main.mdl-layout__content.global-min-height
+        // contents
+        block contents
+        // footer
+        include ./footer.jade
     // javascripts
     block js
       script(type="text/javascript", src="lib/js/jquery/jquery.js")
       script(type="text/javascript", src="lib/js/underscore/underscore.js")
-      script(type="text/javascript", src="lib/js/tether/tether.js")
-      script(type="text/javascript", src="lib/js/bootstrap/bootstrap.js")
-      script(type="text/javascript", src="lib/js/bootstrap-material-design/bootstrap-material-design.iife.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+      script(defer, type="text/javascript", src="//code.getmdl.io/1.1.3/material.min.js")
+//      script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/js/material.min.js")
+//      script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.9/js/ripples.min.js")
