@@ -15,7 +15,10 @@ module.exports = (grunt) =>
 		less:
 			dist:
 				options:
-					compress: true
+					compress:
+            true
+          paths:
+            ['public/lib/css']
 				files: [
 					'public/css/style.css': 'less/style.less'
 				]
@@ -55,7 +58,6 @@ module.exports = (grunt) =>
 				]
 				livereload:
 					enabled: true
-					extensions: ['js', 'html', 'css']
 			"coffee": (path) ->
 				['newer:coffee']
 			"jade": (path) ->
