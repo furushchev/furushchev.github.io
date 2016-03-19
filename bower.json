@@ -20,7 +20,7 @@
   "dependencies": {
     "underscore": "1.8.3",
     "jquery": "2.2.2",
-    "bootstrap-material-design": "4.0.1"
+    "bootstrap-material-design": "^4.0.1"
   },
   "ignoreDependencies": [
     "bootstrap-sass"
