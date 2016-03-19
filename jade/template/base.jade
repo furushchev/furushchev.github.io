@@ -1,0 +1,24 @@
+doctype html
+html(lang="ja")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="author", content="furushchev")
+    title Я - чайка, нет... не то. Я - чайник.
+    // stylesheets
+    block css
+      link(rel='stylesheet', href='css/style.css')
+  body
+    // header
+    include ./header.jade
+    // contents
+    block contents
+    // footer
+    include ./footer.jade
+    // javascripts
+    block js
+      script(type="text/javascript", src="lib/js/jquery/jquery.js")
+      script(type="text/javascript", src="lib/js/underscore/underscore.js")
+      script(type="text/javascript", src="lib/js/tether/tether.js")
+      script(type="text/javascript", src="lib/js/bootstrap/bootstrap.js")
+      script(type="text/javascript", src="lib/js/bootstrap-material-design/bootstrap-material-design.iife.js")

@@ -116,6 +116,4 @@ Temporary Items
 
 
 bower_components
-public/*.html
-public/js
-public/css
+public
