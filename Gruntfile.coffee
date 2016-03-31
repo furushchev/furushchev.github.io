@@ -14,7 +14,7 @@ module.exports = (grunt) =>
         files: [
           expand: true
           cwd: 'static'
-          src: ['**/*', '!img/**']
+          src: ['**/*', '!img/**', '!**/*~']
           dest: 'public'
         ]
     jade:
@@ -126,5 +126,6 @@ module.exports = (grunt) =>
   grunt.loadNpmTasks 'grunt-gh-pages'
   grunt.registerTask 'make', ['bower', 'newer:copy', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
   grunt.registerTask 'dry-deploy', ['rsync:dryrun']
+  grunt.registerTask 'gh-deploy', ['make', 'gh-pages']
   grunt.registerTask 'deploy', ['make', 'rsync:deploy', 'gh-pages']
   grunt.registerTask 'default', ['make', 'connect', 'esteWatch']
