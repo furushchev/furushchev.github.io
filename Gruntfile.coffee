@@ -108,7 +108,11 @@ module.exports = (grunt) =>
           dest: "~/public_html"
           host: "furushchev@aries+www"
           syncDestIgnoreExcl: true
-
+    "gh-pages":
+      options:
+        base: "public"
+        branch: "master"
+      src: '**/*'
   grunt.loadNpmTasks 'grunt-rsync'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-less'
@@ -119,7 +123,8 @@ module.exports = (grunt) =>
   grunt.loadNpmTasks 'grunt-newer'
   grunt.loadNpmTasks 'grunt-image'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-gh-pages'
   grunt.registerTask 'make', ['bower', 'newer:copy', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
   grunt.registerTask 'dry-deploy', ['rsync:dryrun']
-  grunt.registerTask 'deploy', ['make', 'rsync:deploy']
+  grunt.registerTask 'deploy', ['make', 'rsync:deploy', 'gh-pages']
   grunt.registerTask 'default', ['make', 'connect', 'esteWatch']
