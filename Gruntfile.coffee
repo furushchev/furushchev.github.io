@@ -21,6 +21,8 @@ module.exports = (grunt) =>
       compile:
         options:
           pretty: true
+          data:
+            hostname: 'furushchev.ru'
         files: [
           expand: true
           cwd: 'jade'
