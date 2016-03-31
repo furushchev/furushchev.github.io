@@ -14,8 +14,8 @@ module.exports = (grunt) =>
         files: [
           expand: true
           cwd: 'static'
-          src: ['**', '!img/**']
-          dest: 'public/data'
+          src: ['**/*', '!img/**']
+          dest: 'public'
         ]
     jade:
       compile:
