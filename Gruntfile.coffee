@@ -114,7 +114,18 @@ module.exports = (grunt) =>
       options:
         base: "public"
         branch: "master"
-      src: '**/*'
+      publish:
+        options:
+          repo: "https://github.com/furushchev/furushchev.github.io.git"
+        src: '**/*'
+      deploy:
+        src: '**/*'
+        options:
+          user:
+            name: "Yuki Furuta"
+            email: "furushchev@jsk.imi.i.u-tokyo.ac.jp"
+          repo: "https://" + process.env.GH_TOKEN + "@github.com/furushchev/furushchev.github.io.git"
+          silent: true
   grunt.loadNpmTasks 'grunt-rsync'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-less'
@@ -126,8 +137,15 @@ module.exports = (grunt) =>
   grunt.loadNpmTasks 'grunt-image'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-gh-pages'
+  grunt.registerTask 'check-deploy', () ->
+    if process.env.TRAVIS is 'true' and process.env.TRAVIS_SECURE_ENV_VARS is 'true' and process.env.TRAVIS_PULL_REQUEST is 'false'
+      grunt.log.writeln "deploying..."
+      grunt.task.run 'gh-pages:deploy'
+    else
+      grunt.log.writeln "skip deploy..."
   grunt.registerTask 'make', ['bower', 'newer:copy', 'newer:image', 'newer:coffee', 'newer:jade', 'newer:less']
   grunt.registerTask 'dry-deploy', ['rsync:dryrun']
   grunt.registerTask 'gh-deploy', ['make', 'gh-pages']
+  grunt.registerTask 'gh-deploy-travis', ['make', 'check-deploy']
   grunt.registerTask 'deploy', ['make', 'rsync:deploy', 'gh-pages']
   grunt.registerTask 'default', ['make', 'connect', 'esteWatch']
