@@ -125,7 +125,7 @@ module.exports = (grunt) =>
             name: "Yuki Furuta"
             email: "furushchev@jsk.imi.i.u-tokyo.ac.jp"
           repo: "https://" + process.env.GH_TOKEN + "@github.com/furushchev/furushchev.github.io.git"
-          silent: true
+          silent: false
   grunt.loadNpmTasks 'grunt-rsync'
   grunt.loadNpmTasks 'grunt-contrib-jade'
   grunt.loadNpmTasks 'grunt-contrib-less'
